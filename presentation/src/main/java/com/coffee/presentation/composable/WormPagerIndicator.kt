@@ -1,5 +1,5 @@
 //Got from https://gist.github.com/denis-ismailaj/521417c3e519032c6b4e5f49e8f3d5c8
-package com.coffee.presenation.composable
+package com.coffee.presentation.composable
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Canvas
