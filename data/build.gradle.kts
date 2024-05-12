@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.local.data"
+    namespace = "com.coffee.data"
     compileSdk = 34
 
     defaultConfig {

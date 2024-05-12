@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.local.domain"
+    namespace = "com.coffee.domain"
     compileSdk = 34
 
     defaultConfig {

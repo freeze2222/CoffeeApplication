@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.local.presentation"
+    namespace = "com.coffee.presentation"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.local.presentation"
+        applicationId = "com.coffee.presentation"
         minSdk = 31
         targetSdk = 34
         versionCode = 1
