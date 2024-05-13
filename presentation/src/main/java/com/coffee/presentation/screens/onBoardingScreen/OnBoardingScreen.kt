@@ -164,20 +164,21 @@ fun OnBoardingPagerScreen() {
 
 
                 Spacer(modifier = Modifier.weight(1f))
-                ClickableText(text = buildAnnotatedString {
-                    withStyle(
-                        SpanStyle(
-                            color = Color.White, fontFamily = font, fontWeight = FontWeight.Bold
-                        )
-                    ) {
-                        append("Skip")
-                    }
-                }) {
-                    scope.launch {
-                        state.scrollToPage(3)
+                if (state.currentPage != state.pageCount - 1) {
+                    ClickableText(text = buildAnnotatedString {
+                        withStyle(
+                            SpanStyle(
+                                color = Color.White, fontFamily = font, fontWeight = FontWeight.Bold
+                            )
+                        ) {
+                            append("Skip")
+                        }
+                    }) {
+                        scope.launch {
+                            state.animateScrollToPage(state.pageCount - 1)
+                        }
                     }
                 }
-
             }
             Spacer(modifier = Modifier.height(200.dp))
             data.title?.let { it1 ->

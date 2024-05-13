@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -30,6 +32,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    packaging{
+        resources{
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/gradle/incremental.annotation.processors"
+        }
+    }
 }
 
 dependencies {
@@ -40,8 +48,15 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
     implementation(libs.hilt.android.compiler)
+    implementation(libs.hilt.android)
+
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }

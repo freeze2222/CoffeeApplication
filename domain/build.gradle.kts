@@ -32,12 +32,19 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    packaging{
+        resources{
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/gradle/incremental.annotation.processors"
+        }
+    }
 }
 
 dependencies {
-    implementation(libs.hilt.android)
     implementation(project(":data"))
     kapt(libs.hilt.android.compiler)
+    //implementation(libs.hilt.android.compiler)
+    implementation(libs.hilt.android)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -45,4 +52,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
