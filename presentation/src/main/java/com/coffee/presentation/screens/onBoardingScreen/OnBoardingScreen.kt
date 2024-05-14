@@ -129,7 +129,7 @@ fun OnBoardingWelcomeScreen(navController: NavHostController) {
 @OptIn(ExperimentalFoundationApi::class)
 @SuppressLint("ComposeModifierMissing", "DiscouragedApi")
 @Composable
-fun OnBoardingPagerScreen() {
+fun OnBoardingPagerScreen(navController: NavHostController) {
     val state = rememberPagerState(initialPage = 0, pageCount = { 3 })
     val context = LocalContext.current
     val data = Constants.OnboardingData[state.currentPage + 1]
@@ -206,7 +206,7 @@ fun OnBoardingPagerScreen() {
             if (state.currentPage == state.pageCount - 1) {
                 Spacer(modifier = Modifier.height(250.dp))
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { navController.navigate(Constants.NavDestinations.REGISTER) },
                     modifier = Modifier
                         .padding(10.dp, 0.dp, 10.dp)
                         .fillMaxWidth()
@@ -224,7 +224,7 @@ fun OnBoardingPagerScreen() {
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { navController.navigate(Constants.NavDestinations.LOGIN) },
                     modifier = Modifier
                         .padding(10.dp, 0.dp, 10.dp, 55.dp)
                         .fillMaxWidth()

@@ -4,6 +4,8 @@ import com.coffee.data.models.OnboardingModel
 
 object Constants {
     object NavDestinations{
+        const val REGISTER = "RegisterScreen"
+        const val LOGIN = "LOGIN"
         const val ONBOARDING = "OnBoardingWelcomeScreen"
         const val ONBOARDING_PAGER = "OnBoardingPagerScreen"
     }
