@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -21,11 +22,13 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withAnnotation
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,6 +36,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.coffee.presentation.R
+import com.coffee.presentation.composable.BitLine
+import com.coffee.presentation.composable.DecoratedButton
+import com.coffee.presentation.composable.SocialButton
 import com.coffee.presentation.composable.editText
 
 @Composable
@@ -40,6 +46,7 @@ fun LoginScreen(navController: NavHostController) {
     LoginScreenContent()
 }
 
+@OptIn(ExperimentalTextApi::class)
 @SuppressLint("ComposeModifierMissing")
 @Composable
 fun LoginScreenContent() {
@@ -70,12 +77,14 @@ fun LoginScreenContent() {
         )
         Spacer(modifier = Modifier.height(20.dp))
         val email = editText(placeholder = "E-mail Address")
-        Spacer(modifier = Modifier.height(25.dp))
+        Spacer(modifier = Modifier.height(15.dp))
         val password = editText(placeholder = "Password", isPassword = true)
         Spacer(modifier = Modifier.height(15.dp))
-        Row(horizontalArrangement = Arrangement.End, modifier = Modifier
-            .padding(end = 15.dp)
-            .fillMaxWidth()) {
+        Row(
+            horizontalArrangement = Arrangement.End, modifier = Modifier
+                .padding(end = 15.dp)
+                .fillMaxWidth()
+        ) {
             ClickableText(text = buildAnnotatedString {
                 withStyle(
                     SpanStyle(
@@ -87,13 +96,47 @@ fun LoginScreenContent() {
                     append("Forgot Password?")
                 }
             }) {
-                //TODO
+                //TODO navigation
             }
         }
         Spacer(modifier = Modifier.height(10.dp))
-        //Button(onClick = { /*TODO*/ }, ) {
-            
-        //}
+        DecoratedButton(text = "Sign in") {
+            //TODO View model link
+        }
+        Spacer(modifier = Modifier.height(15.dp))
+        BitLine(text = "Or Login with")
+        Spacer(modifier = Modifier.height(20.dp))
+        Row(horizontalArrangement = Arrangement.Center) {
+            /* Render issue bruh
+            SocialButton(painter = painterResource(id = R.drawable.google_logo)) {
+                //TODO View model link
+            }
+            Spacer(modifier = Modifier.width(25.dp))
+            SocialButton(painter = painterResource(id = R.drawable.google_logo)) { //TODO Logo
+                //TODO View model link
+            }
+            Spacer(modifier = Modifier.width(25.dp))
+            SocialButton(painter = painterResource(id = R.drawable.google_logo)) { //TODO Logo
+                //TODO View model link
+            }
+            */
+
+        }
+        Spacer(modifier = Modifier.height(250.dp))
+        Row(modifier = Modifier.weight(2f)) {
+            ClickableText(text = buildAnnotatedString {
+                withStyle(SpanStyle(color = Color.White, fontFamily = FontFamily(Font(R.font.regular)), fontSize = 16.sp, fontWeight = FontWeight.Bold)){
+                    append("Don't have an account? ")
+                    withAnnotation("RegisterTag", "RegisterTag"){
+                        withStyle(SpanStyle(color = Color(0xFFCE9760), fontFamily = FontFamily(Font(R.font.bold)))){
+                            append("Register")
+                        }
+                    }
+                }
+            }) {
+                //TODO Navigation
+            }
+        }
     }
 }
 

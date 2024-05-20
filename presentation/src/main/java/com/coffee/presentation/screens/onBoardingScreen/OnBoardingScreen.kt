@@ -45,6 +45,7 @@ import androidx.navigation.compose.rememberNavController
 import com.coffee.data.utils.Constants
 import com.coffee.presentation.composable.WormPageIndicator
 import com.coffee.presentation.R
+import com.coffee.presentation.composable.DecoratedButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
@@ -205,6 +206,10 @@ fun OnBoardingPagerScreen(navController: NavHostController) {
             }
             if (state.currentPage == state.pageCount - 1) {
                 Spacer(modifier = Modifier.height(250.dp))
+                DecoratedButton("Register") {
+                    navController.navigate(Constants.NavDestinations.REGISTER)
+                }
+                /*
                 Button(
                     onClick = { navController.navigate(Constants.NavDestinations.REGISTER) },
                     modifier = Modifier
@@ -222,8 +227,9 @@ fun OnBoardingPagerScreen(navController: NavHostController) {
                         fontWeight = FontWeight.Bold
                     )
                 }
+                */
                 Spacer(modifier = Modifier.height(10.dp))
-                Button(
+                /*Button(
                     onClick = { navController.navigate(Constants.NavDestinations.LOGIN) },
                     modifier = Modifier
                         .padding(10.dp, 0.dp, 10.dp, 55.dp)
@@ -244,6 +250,10 @@ fun OnBoardingPagerScreen(navController: NavHostController) {
                         fontFamily = font,
                         fontWeight = FontWeight.Bold
                     )
+                }
+                */
+                DecoratedButton(text = "Sign In", transparent = true) {
+                    navController.navigate(Constants.NavDestinations.LOGIN)
                 }
             }
         }

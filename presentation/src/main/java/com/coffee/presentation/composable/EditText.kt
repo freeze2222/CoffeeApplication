@@ -2,6 +2,7 @@ package com.coffee.presentation.composable
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -36,13 +37,14 @@ fun editText(placeholder: String, isPassword: Boolean = false): TextFieldValue {
             unfocusedContainerColor = Color(0xFF16181C),
             unfocusedIndicatorColor = Color.Transparent
         ),
-        shape = RoundedCornerShape(15.dp),
+        shape = RoundedCornerShape(8.dp),
         placeholder = {
             Text(
                 text = placeholder,
-                fontSize = 16.sp,
+                fontSize = 12.sp,
                 fontFamily = FontFamily(Font(R.font.regular)),
-                fontWeight = FontWeight.W700
+                fontWeight = FontWeight.W700,
+                modifier = Modifier.offset(0.dp, 5.dp)
             )
         },
         modifier = Modifier
