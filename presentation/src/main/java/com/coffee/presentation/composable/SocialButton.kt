@@ -22,7 +22,7 @@ import com.coffee.presentation.R
 
 @SuppressLint("ComposeModifierMissing")
 @Composable
-fun SocialButton(painter: Painter, onClick: () -> Unit) {
+fun SocialButton(id: Int, onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .size(100.dp, 65.dp)
@@ -32,7 +32,7 @@ fun SocialButton(painter: Painter, onClick: () -> Unit) {
     ) {
         IconButton(onClick = onClick) {
             Icon(
-                painter = painter,
+                painter = painterResource(id = id),
                 contentDescription = null,
                 modifier = Modifier.size(24.dp),
                 tint = Color.White
@@ -44,7 +44,7 @@ fun SocialButton(painter: Painter, onClick: () -> Unit) {
 @Preview
 @Composable
 private fun SocialButtonPreview() {
-    SocialButton(painterResource(id = R.drawable.google_logo)) {
+    SocialButton(id = R.drawable.google_logo) {
 
     }
 }

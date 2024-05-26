@@ -20,6 +20,7 @@ hiltNavigationCompose = "1.2.0"
 lintApiVersion = "31.4.0"
 navigationCompose = "2.7.7"
 gson = "2.10.1"
+composePreviewRenderer = "0.0.1-alpha01"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -52,6 +53,7 @@ hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", ve
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converterGson" }
 lint-checks = { module = "com.android.tools.lint:lint-checks", version.ref = "lintApiVersion" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+compose-preview-renderer = { group = "com.android.tools.compose", name = "compose-preview-renderer", version.ref = "composePreviewRenderer" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

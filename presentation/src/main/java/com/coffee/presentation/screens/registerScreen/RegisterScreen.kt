@@ -1,4 +1,4 @@
-package com.coffee.presentation.screens.loginScreen
+package com.coffee.presentation.screens.registerScreen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.ClickableText
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -33,23 +32,16 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.coffee.presentation.R
 import com.coffee.presentation.composable.BitLine
 import com.coffee.presentation.composable.DecoratedButton
 import com.coffee.presentation.composable.SocialButton
 import com.coffee.presentation.composable.editText
 
-@Composable
-fun LoginScreen(navController: NavHostController) {
-    LoginScreenContent()
-}
-
-@OptIn(ExperimentalTextApi::class)
 @SuppressLint("ComposeModifierMissing")
+@OptIn(ExperimentalTextApi::class)
 @Composable
-fun LoginScreenContent() {
+fun RegisterScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -69,43 +61,26 @@ fun LoginScreenContent() {
         )
         Spacer(modifier = Modifier.height(35.dp))
         Text(
-            text = "Welcome to Login",
+            text = "Register your Account",
             fontFamily = FontFamily(Font(R.font.regular)),
             fontWeight = FontWeight.Bold,
             fontSize = 28.sp,
             color = Color.White
         )
         Spacer(modifier = Modifier.height(20.dp))
-        val email = editText(placeholder = "E-mail Address")
+        val name = editText(placeholder = "E-mail Address")
+        Spacer(modifier = Modifier.height(15.dp))
+        val email = editText(placeholder = "Password")
         Spacer(modifier = Modifier.height(15.dp))
         val password = editText(placeholder = "Password", isPassword = true)
         Spacer(modifier = Modifier.height(15.dp))
-        Row(
-            horizontalArrangement = Arrangement.End,
-            modifier = Modifier
-                .padding(end = 15.dp)
-                .fillMaxWidth()
-        ) {
-            ClickableText(text = buildAnnotatedString {
-                withStyle(
-                    SpanStyle(
-                        fontFamily = FontFamily(Font(R.font.bold)),
-                        color = Color(0xFFCE9760),
-                        fontSize = 12.sp
-                    )
-                ) {
-                    append("Forgot Password?")
-                }
-            }) {
-                //TODO navigation
-            }
-        }
-        Spacer(modifier = Modifier.height(10.dp))
-        DecoratedButton(text = "Sign in") {
+        val passwordConfirmation = editText(placeholder = "Password", isPassword = true)
+        Spacer(modifier = Modifier.height(25.dp))
+        DecoratedButton(text = "Register") {
             //TODO View model link
         }
         Spacer(modifier = Modifier.height(15.dp))
-        BitLine(text = "Or Login with")
+        BitLine(text = "Or Register with")
         Spacer(modifier = Modifier.height(20.dp))
         Row(horizontalArrangement = Arrangement.Center) {
             SocialButton(id = R.drawable.google_logo) { //TODO Logo
@@ -120,7 +95,7 @@ fun LoginScreenContent() {
                 //TODO View model link
             }
         }
-        Spacer(modifier = Modifier.height(190.dp))
+        Spacer(modifier = Modifier.height(50.dp))
         Row(modifier = Modifier.weight(2f)) {
             ClickableText(text = buildAnnotatedString {
                 withStyle(
@@ -131,15 +106,15 @@ fun LoginScreenContent() {
                         fontWeight = FontWeight.Bold
                     )
                 ) {
-                    append("Don't have an account? ")
-                    withAnnotation("RegisterTag", "RegisterTag") {
+                    append("Already have an account ? ")
+                    withAnnotation("LoginTag", "LoginTag") {
                         withStyle(
                             SpanStyle(
                                 color = Color(0xFFCE9760),
                                 fontFamily = FontFamily(Font(R.font.bold))
                             )
                         ) {
-                            append("Register")
+                            append("Login")
                         }
                     }
                 }
@@ -152,6 +127,6 @@ fun LoginScreenContent() {
 
 @Preview
 @Composable
-private fun LoginPreview() {
-    LoginScreen(navController = rememberNavController())
+private fun RegisterScreenPreview() {
+    RegisterScreen()
 }

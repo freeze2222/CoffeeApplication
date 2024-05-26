@@ -54,6 +54,7 @@ android {
 
 dependencies {
     implementation(project(":data"))
+    implementation(libs.compose.preview.renderer)
     compileOnly (libs.android.lint.api)
     compileOnly (libs.lint.checks)
     lintChecks(libs.compose.lint.checks)

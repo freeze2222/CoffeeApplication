@@ -6,7 +6,7 @@ import com.coffee.data.utils.Provider
 import javax.inject.Inject
 
 class DomainRepositoryImpl @Inject constructor() : DomainRepository{
-    //override suspend fun getOnboardingData(): List<OnboardingModel> {
-        //return Constants.OnboardingData
-    //}
+    override suspend fun login(): List<OnboardingModel> {
+        return emptyList()//Provider.provideRetrofit().getTest().execute()
+    }
 }
