@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,8 +38,7 @@ fun HomeScreen() {
     val fontFamily =
         FontFamily(Font(R.font.regular, FontWeight.Normal), Font(R.font.bold, FontWeight.Bold))
     Surface(
-        Modifier.fillMaxSize(),
-        color = Color(0xFF543A20)
+        Modifier.fillMaxSize(), color = Color(0xFF543A20)
     ) {
         Column(
             modifier = Modifier
@@ -47,8 +48,7 @@ fun HomeScreen() {
         ) {
             Spacer(modifier = Modifier.height(20.dp))
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.avatar_placeholder),
@@ -75,6 +75,28 @@ fun HomeScreen() {
                         color = Color.White
                     )
                 }
+                Spacer(modifier = Modifier.width(40.dp))
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.search_icon),
+                        contentDescription = null,
+                        modifier = Modifier.size(24.dp),
+                        tint = Color.White
+                    )
+                }
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.bell_icon),
+                        contentDescription = null,
+                        modifier = Modifier.size(24.dp),
+                        tint = Color.White
+                    )
+                }
+            }
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .background(Color(0xFFCE9760))) {
+
             }
         }
     }
