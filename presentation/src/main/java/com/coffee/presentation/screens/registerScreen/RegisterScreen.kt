@@ -1,20 +1,19 @@
 package com.coffee.presentation.screens.registerScreen
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
@@ -32,18 +31,26 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.coffee.data.utils.Constants
 import com.coffee.presentation.R
 import com.coffee.presentation.composable.BitLine
 import com.coffee.presentation.composable.DecoratedButton
 import com.coffee.presentation.composable.SocialButton
 import com.coffee.presentation.composable.editText
 
-@SuppressLint("ComposeModifierMissing")
 @OptIn(ExperimentalTextApi::class)
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(
+    navController: NavHostController,
+    modifier: Modifier = Modifier,
+    viewModel: RegisterViewModel = hiltViewModel<RegisterViewModel>(),
+) {
+    val state = viewModel.state.collectAsState()
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .paint(
                 painterResource(id = R.drawable.background), contentScale = ContentScale.FillBounds
@@ -77,22 +84,22 @@ fun RegisterScreen() {
         val passwordConfirmation = editText(placeholder = "Password", isPassword = true)
         Spacer(modifier = Modifier.height(25.dp))
         DecoratedButton(text = "Register") {
-            //TODO View model link
+            viewModel.register(name.text, email.text, password.text, passwordConfirmation.text)
         }
         Spacer(modifier = Modifier.height(15.dp))
         BitLine(text = "Or Register with")
         Spacer(modifier = Modifier.height(20.dp))
         Row(horizontalArrangement = Arrangement.Center) {
-            SocialButton(id = R.drawable.google_logo) { //TODO Logo
-                //TODO View model link
+            SocialButton(id = R.drawable.facebook_logo) {
+                viewModel.registerWithFacebook()
             }
             Spacer(modifier = Modifier.width(25.dp))
-            SocialButton(id = R.drawable.google_logo) { //TODO Logo
-                //TODO View model link
+            SocialButton(id = R.drawable.google_logo) {
+                viewModel.registerWithGoogle()
             }
             Spacer(modifier = Modifier.width(25.dp))
-            SocialButton(id = R.drawable.google_logo) { //TODO Logo
-                //TODO View model link
+            SocialButton(id = R.drawable.x_logo) {
+                viewModel.registerWithX()
             }
         }
         Spacer(modifier = Modifier.height(50.dp))
@@ -119,7 +126,7 @@ fun RegisterScreen() {
                     }
                 }
             }) {
-                //TODO Navigation
+                navController.navigate(Constants.NavDestinations.LOGIN)
             }
         }
     }
@@ -128,5 +135,5 @@ fun RegisterScreen() {
 @Preview
 @Composable
 private fun RegisterScreenPreview() {
-    RegisterScreen()
+    RegisterScreen(rememberNavController())
 }

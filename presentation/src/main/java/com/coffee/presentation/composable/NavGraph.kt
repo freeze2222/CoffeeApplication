@@ -1,7 +1,6 @@
 package com.coffee.presentation.composable
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -9,6 +8,7 @@ import com.coffee.data.utils.Constants
 import com.coffee.presentation.screens.loginScreen.LoginScreen
 import com.coffee.presentation.screens.onBoardingScreen.OnBoardingPagerScreen
 import com.coffee.presentation.screens.onBoardingScreen.OnBoardingWelcomeScreen
+import com.coffee.presentation.screens.registerScreen.RegisterScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -30,7 +30,7 @@ fun NavGraph(navController: NavHostController) {
         }
         composable(Constants.NavDestinations.REGISTER){
             EnterAnimation {
-                //TODO
+                RegisterScreen(navController = navController)
             }
         }
     }

@@ -17,9 +17,21 @@ class RegisterViewModel @Inject constructor(private val useCase: LoginUseCase) :
     val state: StateFlow<RegisterScreenState>
         get() = _state.asStateFlow()
 
-    fun login(email: String, password: String){
+    fun register(name: String, email: String, password: String, passwordConfirmation: String) {
         viewModelScope.launch {
             useCase.login(email, password)
         }
+    }
+
+    fun registerWithFacebook() {
+        // STOPSHIP: Social media registration support
+    }
+
+    fun registerWithGoogle() {
+        // STOPSHIP: Social media registration support
+    }
+
+    fun registerWithX() {
+        // STOPSHIP: Social media registration support
     }
 }
